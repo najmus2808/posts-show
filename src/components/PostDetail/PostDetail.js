@@ -14,6 +14,16 @@ const PostDetail = () => {
       .then((data) => setPost(data));
   }, [id]);
 
+  const [comments, setComments] = useState([]);
+  const { name, } = post;
+
+  useEffect(() => {
+    const url = `https://jsonplaceholder.typicode.com/comments?postId=${id}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setComments(data));
+  }, [id]);
+
   const postStyle = {
     border:'1px solid blue',
     margin:'20px',
@@ -21,10 +31,20 @@ const PostDetail = () => {
     borderRadius:'10px'
 }
   return (
-    <div style={postStyle}>
+    <div>
+        <div style={postStyle}>
       <h1>Id: {id}</h1>
       <h2>Title: {title}</h2>
       <h3>Description: {body}</h3>
+    </div>
+
+    <div style={postStyle}>
+         <h1>Comment Section</h1>
+
+         {
+                comments.map(comment => <h2>{comment.name}</h2>)
+         }
+    </div>
     </div>
   );
 };
