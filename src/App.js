@@ -9,8 +9,8 @@ import {
 
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
-import Post from './components/Post/Post';
 import NotFound from './components/NotFound/NotFound';
+import PostDetail from './components/PostDetail/PostDetail';
 
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
           <Route path="/home">
             <Home />
           </Route>
-          <Route path="/post">
-            <Post />
+          <Route path="/post/:id">
+            <PostDetail />
           </Route>
           <Route exact path="/">
             <Home />
