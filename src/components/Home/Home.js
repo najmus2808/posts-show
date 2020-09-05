@@ -3,7 +3,6 @@ import Post from "../Post/Post";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
-  console.log(posts);
 
   useEffect(() => {
     const url = "https://jsonplaceholder.typicode.com/posts";
@@ -14,9 +13,8 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Home</h1>
       {posts.map((post) => (
-        <Post post={post}></Post>
+        <Post post={post} key={post.id}></Post>
       ))}
     </div>
   );

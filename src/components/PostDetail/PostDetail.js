@@ -21,14 +21,7 @@ const PostDetail = () => {
   }, [id]);
 
 
-  const [images, setImages] = useState();
-
-  useEffect(() => {
-    const url = `https://loremflickr.com/600/400?random=${id}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setImages(data));
-  }, [id]);
+  
 
   const postStyle = {
     border:'1px solid blue',
@@ -44,6 +37,9 @@ const PostDetail = () => {
 
   }
 
+
+
+
     return (
       <div>
           <div style={postStyle}>
@@ -55,10 +51,13 @@ const PostDetail = () => {
 
     <h1 style={comStyle}><strong>Comment Section</strong></h1>
 
+
     {
-      comments.map(comment => <div>
-        <img src={images} alt="" height="200" width="200"/>
+      comments.map(comment => 
+      <div>
+        <img src={ `https://loremflickr.com/600/400?random=${comment.id}`} alt="" height="100" width="100"/>
       <h3>{comment.body}</h3>
+      <hr/>
       </div>)
     }
           </div>
